@@ -1,0 +1,53 @@
+<%- include('../partials/header.ejs') -%>
+
+<div class="container mt-4 p-3 border rounded">
+    <h3 class="text-center">Gallery Collection</h3>
+    <hr>
+    <div>
+        <% if(message != '') { %>
+        <div class="p-3">
+            <div class="alert  mb-0" style="background-color: rgb(141, 228, 141); border: none; color: rgb(2, 120, 28);"
+                role="alert">
+                <%= message %>
+            </div>
+        </div>
+
+        <% } else if(error != ''){ %>
+        <div class="p-3">
+            <div class="alert alert-dismissible mb-0"
+                style="background-color: rgb(237 183 183); border: none; color: rgb(120 2 2);" role="alert">
+                <%= error %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+
+        <% } %>
+
+    </div>
+    <form method="post" action="/add-photo" enctype='multipart/form-data'>
+        <div class="form-group">
+            <label>Select Photo</label>
+            <input type="file" class="form-control" name="img" placeholder="Select Photo">
+        </div>
+        <button type="submit" class="btn btn-sm btn-primary">Add Photo</button>
+    </form>
+
+    <br>
+    <hr>
+    <!-- <br>
+    <% photo.forEach((data, index)=> { %>
+    <%= console.log(data.img) %> -->
+    <!-- <img src="<%= data.img %>" class="img-fluid" alt="Responsive image"> -->
+    <div class="gallery">
+        <img onclick="getPics()"
+            src="https://images.unsplash.com/photo-1543517515-d6ff15a98642?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjQ0NDc3fQ&s=493802e93ec426171750ac2291e2867e" />
+
+    </div>
+    <div id="fullpage" onclick="this.style.display='none';"></div>
+    <!-- <% }) %> -->
+
+</div>
+
+<%- include('../partials/footer.ejs') -%>

@@ -1,0 +1,45 @@
+<%- include('../partials/header.ejs') -%>
+
+<div class="container mt-4 p-3 border rounded">
+    <h3 class="text-center">Login</h3>
+    <hr>
+      <div>
+          <% if(message != '') { %>
+          <div class="p-3">
+              <div class="alert  mb-0"
+                  style="background-color: rgb(141, 228, 141); border: none; color: rgb(2, 120, 28);" role="alert">
+                  <%= message %>
+              </div>
+          </div>
+
+          <% } else if(error != ''){ %>
+          <div class="p-3">
+              <div class="alert alert-dismissible mb-0"
+                  style="background-color: rgb(237 183 183); border: none; color: rgb(120 2 2);" role="alert">
+                  <%= error %>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+          </div>
+
+          <% } %>
+
+      </div>
+    <form method="post" action="/login">
+        <div class="form-group">
+            <label>Email address</label>
+            <input type="text" class="form-control" name="email"
+                value="<%= formValue && formValue.email ? formValue.email :'' %>" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control"
+                value="<%= formValue && formValue.password ? formValue.password :'' %>" name="password"
+                placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+    </form>
+</div>
+
+<%- include('../partials/footer.ejs') -%>
